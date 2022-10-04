@@ -5,14 +5,59 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
+    <Button
+        android:id="@+id/botonBuscarDispositivosBTLE"
+        android:text="Arrancar Servicio"
+        android:onClick="botonArrancarServicioPulsado"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/botonDetenerBusquedaDispositivosBTLE"
+        app:layout_constraintEnd_toEndOf="@+id/botonDetenerBusquedaDispositivosBTLE"
+        app:layout_constraintStart_toStartOf="@+id/botonDetenerBusquedaDispositivosBTLE"
+        />
+
+    <Button
+        android:id="@+id/botonDetenerBusquedaDispositivosBTLE"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:onClick="botonDetenerServicioPulsado"
+        android:text="Detener Servicio"
+        app:layout_constraintBottom_toTopOf="@+id/botonBuscarNuestroDispositivoBTLE"
+        app:layout_constraintEnd_toEndOf="@+id/botonBuscarNuestroDispositivoBTLE"
+        app:layout_constraintStart_toStartOf="@+id/botonBuscarNuestroDispositivoBTLE" />
 
     <TextView
+        android:id="@+id/numero"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/botonDetenerBusquedaDispositivosBTLE"
+        app:layout_constraintEnd_toEndOf="@+id/botonDetenerBusquedaDispositivosBTLE"
+        app:layout_constraintStart_toStartOf="@+id/botonDetenerBusquedaDispositivosBTLE"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <Button
+        android:id="@+id/anyadir"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="40dp"
+        android:text="Añadir"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/botonBuscarNuestroDispositivoBTLE"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:onClick="botonBuscarNuestroDispositivoBTLEPulsado"
+        android:text="Buscar nuestro dispositivo  BTLE"
+        app:layout_constraintBottom_toTopOf="@+id/anyadir"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
