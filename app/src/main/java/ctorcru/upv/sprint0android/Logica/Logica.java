@@ -20,8 +20,8 @@ import ctorcru.upv.sprint0android.MainActivity;
 import ctorcru.upv.sprint0android.Modelo.Medicion;
 
 public class Logica {
-    public static final String URL_Uni = "http://10.236.54.147:80/sprint0/insertarMedida.php";
-    private static final String URL = "http://192.168.85.93:80/sprint0/insertarMedida.php";
+    public static final String URL_Uni = "http://192.168.174.101:80/sprint0/insertarMedida.php";
+    private static final String URL = "http://10.236.55.145:80/sprint0/insertarMedida.php";
     private static final String ETIQUETA_LOG = "Sprintct";
 
     public Logica() {
@@ -50,6 +50,7 @@ public class Logica {
                 return parametros;
             }
         };
+
         RequestQueue requestQueue = Volley.newRequestQueue(MainActivity.getInstance());
         requestQueue.add(stringRequest);
     }
