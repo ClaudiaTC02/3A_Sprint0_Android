@@ -19,8 +19,16 @@ import ctorcru.upv.sprint0android.Logica.Logica;
 import ctorcru.upv.sprint0android.Modelo.Medicion;
 import ctorcru.upv.sprint0android.Modelo.TramaIBeacon;
 
+// ---------------------------------------------------------------------------------------------
+/**
+ * @brief Esta clase es la encargada de escuchar los beacons y coger la medición
+ * Autora: Claudia Torres Cruz
+ * Archivo: ServicioEscucharBeacons.java
+ **/
+// ---------------------------------------------------------------------------------------------
 public class ServicioEscucharBeacons extends IntentService {
     // ---------------------------------------------------------------------------------------------
+    // atributos
     // ---------------------------------------------------------------------------------------------
     private static final String ETIQUETA_LOG = "Sprintct";
     private long tiempoDeEspera = 10000;
@@ -29,24 +37,21 @@ public class ServicioEscucharBeacons extends IntentService {
     private ScanCallback callbackDelEscaneo = null;
     private String dispotivo;
     // ---------------------------------------------------------------------------------------------
+    /**
+     * @brief Este es el constructor de nuestra clase
+     * @return objeto ServicioEscucharBeacons
+     * Diseño: --> ServicioEcucharBeacons() --> ServicioEscucharBeacons
+     **/
     // ---------------------------------------------------------------------------------------------
     public ServicioEscucharBeacons() {
         super("HelloIntentService");
         Log.d(ETIQUETA_LOG, " ServicioEscucharBeacons.constructor: termina");
     }
     // ---------------------------------------------------------------------------------------------
-    // ---------------------------------------------------------------------------------------------
-    /*
-    @Override
-    public int onStartCommand( Intent elIntent, int losFlags, int startId) {
-        // creo que este método no es necesario usarlo. Lo ejecuta el thread principal !!!
-        super.onStartCommand( elIntent, losFlags, startId );
-        this.tiempoDeEspera = elIntent.getLongExtra("tiempoDeEspera", 50000);
-        Log.d(ETIQUETA_LOG, " ServicioEscucharBeacons.onStartCommand : empieza: thread=" + Thread.currentThread().getId() );
-        return Service.START_CONTINUATION_MASK | Service.START_STICKY;
-    } // ()
-     */
-    // ---------------------------------------------------------------------------------------------
+    /**
+     * @brief Este método se encarga de parar el servicio
+     * Diseño:  --> parar() -->
+     **/
     // ---------------------------------------------------------------------------------------------
     public void parar () {
         Log.d(ETIQUETA_LOG, " ServicioEscucharBeacons.parar() " );
@@ -57,34 +62,45 @@ public class ServicioEscucharBeacons extends IntentService {
         this.stopSelf();
         Log.d(ETIQUETA_LOG, " ServicioEscucharBeacons.parar() : acaba " );
     }
+    // ---------------------------------------------------------------------------------------------
+    /**
+     * @brief Este método se encarga de detener la búsquedas de dispositivos
+     * Diseño:  --> detenerBusquedaDispositivosBTLE() -->
+     **/
+    // ---------------------------------------------------------------------------------------------
     private void detenerBusquedaDispositivosBTLE(){
         if(this.callbackDelEscaneo==null){ return; }
         this.elEscanner.stopScan(this.callbackDelEscaneo);
         this.callbackDelEscaneo=null;
     }//()
     // ---------------------------------------------------------------------------------------------
+    /**
+     * @brief Este método se ejecuta cuando se destruye el servicio
+     * Diseño:  --> onDestroy() -->
+     **/
     // ---------------------------------------------------------------------------------------------
     public void onDestroy() {
         Log.d("AAA", " ServicioEscucharBeacons.onDestroy() " );
         this.detenerBusquedaDispositivosBTLE();
         this.parar(); // posiblemente no haga falta, si stopService() ya se carga el servicio y su worker thread
-    }
-    // ---------------------------------------------------------------------------------------------
+    } //()
     // ---------------------------------------------------------------------------------------------
     /**
      * The IntentService calls this method from the default worker thread with
      * the intent that started the service. When this method returns, IntentService
      * stops the service, as appropriate.
      */
+    // ---------------------------------------------------------------------------------------------
     @Override
     protected void onHandleIntent(Intent intent) {
         this.tiempoDeEspera = intent.getLongExtra("tiempoDeEspera", /* default */ 50000);
+        //coge el nombre del dispositivo del intent al ejecutar el servicio
         this.dispotivo = intent.getStringExtra("nomrbeDispositivo");
         Log.d(ETIQUETA_LOG, " dispositivoEscuchando=" + dispotivo );
         this.seguir = true;
+        // compruebo que los permisos de bluetooth han sido concedidos
         inicializarBlueTooth();
         buscarEsteDispositivoBTLE(dispotivo);
-        Log.d(ETIQUETA_LOG, dispotivo+"");
         // esto lo ejecuta un WORKER THREAD !
         long contador = 1;
         Log.d(ETIQUETA_LOG, " ServicioEscucharBeacons.onHandleIntent: empieza : thread=" + Thread.currentThread().getId() );
@@ -93,15 +109,22 @@ public class ServicioEscucharBeacons extends IntentService {
                 Thread.sleep(tiempoDeEspera);
                 Log.d(ETIQUETA_LOG, " ServicioEscucharBeacons.onHandleIntent: tras la espera:  " + contador );
                 contador++;
-            }
+            } //while()
             Log.d(ETIQUETA_LOG, " ServicioEscucharBeacons.onHandleIntent : tarea terminada ( tras while(true) )" );
         } catch (InterruptedException e) {
             // Restore interrupt status.
             Log.d(ETIQUETA_LOG, " ServicioEscucharBeacons.onHandleItent: problema con el thread");
             Thread.currentThread().interrupt();
-        }
+        } //try catch()
         Log.d(ETIQUETA_LOG, " ServicioEscucharBeacons.onHandleItent: termina");
     }
+    // ---------------------------------------------------------------------------------------------
+    /**
+     * @brief Este método se encarga de buscar el dispositivo bluetooth
+     * @param dispositivoBuscado
+     * Diseño:  String --> buscarEsteDispositivoBTLE() -->
+     **/
+    // ---------------------------------------------------------------------------------------------
     private void buscarEsteDispositivoBTLE(final String dispositivoBuscado ) {
         Log.d(ETIQUETA_LOG, " buscarEsteDispositivoBTLE(): empieza ");
         Log.d(ETIQUETA_LOG, "  buscarEsteDispositivoBTLE(): instalamos scan callback ");
@@ -115,32 +138,35 @@ public class ServicioEscucharBeacons extends IntentService {
                 TramaIBeacon tib = new TramaIBeacon(bytes);
                 Medicion medicionEnviar = new  Medicion(Utilidades.bytesToInt(tib.getMinor()));
                 new Logica().insertarMedida(medicionEnviar);*/
-            }
+            } //()
             @Override
             public void onBatchScanResults(List<ScanResult> results) {
                 super.onBatchScanResults(results);
                 Log.d(ETIQUETA_LOG, "  buscarEsteDispositivoBTLE(): onBatchScanResults() ");
-            }
+            } //()
             @Override
             public void onScanFailed(int errorCode) {
                 super.onScanFailed(errorCode);
                 Log.d(ETIQUETA_LOG, "  buscarEsteDispositivoBTLE(): onScanFailed() ");
-            }
+            } //()
         };
         List<ScanFilter> filters = new ArrayList<>();
         ScanFilter sf = new ScanFilter.Builder().setDeviceName( dispositivoBuscado ).build();
-        //ScanFilter sf = new ScanFilter.Builder().setDeviceName( dispositivoBuscado ).build();
         filters.add(sf);
         ScanSettings settings = new ScanSettings.Builder()
                 .setScanMode(ScanSettings.SCAN_MODE_LOW_POWER)
                 .build();
-        Log.d(ETIQUETA_LOG, "  buscarEsteDispositivoBTLE(): empezamos a escanear buscando: " + dispositivoBuscado );
         //Log.d(ETIQUETA_LOG, "  buscarEsteDispositivoBTLE(): empezamos a escanear buscando: " + dispositivoBuscado
         //      + " -> " + Utilidades.stringToUUID( dispositivoBuscado ) );
         this.elEscanner.startScan(filters,settings,this.callbackDelEscaneo);
     } // ()
-    // --------------------------------------------------------------
-    // --------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
+    /**
+     * @brief Este método se encarga de mostrar la ifnormación de los dispositivo bluetooth
+     * @param resultado
+     * Diseño:  ScanResult --> buscarEsteDispositivoBTLE() -->
+     **/
+    // ---------------------------------------------------------------------------------------------
     private void mostrarInformacionDispositivoBTLE( ScanResult resultado ) {
 
         BluetoothDevice bluetoothDevice = resultado.getDevice();
@@ -185,11 +211,18 @@ public class ServicioEscucharBeacons extends IntentService {
         Log.d(ETIQUETA_LOG, " txPower  = " + Integer.toHexString(tib.getTxPower()) + " ( " + tib.getTxPower() + " )");
         Log.d(ETIQUETA_LOG, " ****************************************************");
 
+        //Aquí agrego el filtro para que al encontrar mi dispositivo se pueda subir a la base de datos
         if(bluetoothDevice.getName() != null && bluetoothDevice.getName().equals("GTI-3A-ClaudiaTorresCruz")) {
             Log.d("AAAA", "Entro en if");
             subirMedida(new Medicion(Utilidades.bytesToInt(tib.getMinor())));
-        }
+        } //if()
     } // ()
+    // ---------------------------------------------------------------------------------------------
+    /**
+     * @brief Este método se encarga de inicializar bluetooth
+     * Diseño:  --> inicializarBluetooth() -->
+     **/
+    // ---------------------------------------------------------------------------------------------
     private void inicializarBlueTooth() {
         Log.d(ETIQUETA_LOG, " inicializarBlueTooth(): obtenemos adaptador BT ");
         BluetoothAdapter bta = BluetoothAdapter.getDefaultAdapter();
@@ -204,9 +237,18 @@ public class ServicioEscucharBeacons extends IntentService {
         }
         Log.d(ETIQUETA_LOG, " inicializarBlueTooth(): voy a perdir permisos (si no los tuviera) !!!!");
     } // ()
+    // ---------------------------------------------------------------------------------------------
+    /**
+     * @brief Este método se encarga de recoger la medida
+     * @param medicion
+     * Diseño:  Medicion --> subirMedida() -->
+     **/
+    // ---------------------------------------------------------------------------------------------
     private void subirMedida(Medicion medicion){
+        Log.d(ETIQUETA_LOG, " subirMedida(): empieza");
         new Logica().insertarMedida(medicion);
-        Toast.makeText(MainActivity.getInstance(), "HOLA HE PULSADO EL BOTON", Toast.LENGTH_SHORT).show();
+        Log.d(ETIQUETA_LOG, " subirMedida(): acaba");
+        //Toast.makeText(MainActivity.getInstance(), "Se sube la medida", Toast.LENGTH_SHORT).show();
     }
 
 }
