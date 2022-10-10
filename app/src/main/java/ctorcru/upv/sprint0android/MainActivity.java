@@ -39,14 +39,14 @@ import pub.devrel.easypermissions.EasyPermissions;
 
 // -----------------------------------------------------------------------------------------
 /**
-* Autor: Claudia Torres Cruz
-* Archivo: MainActivity
-* @brief Aquí se encuentra el código que configura la funcionalidad de la app
+ * @brief Aquí se encuentra el código que configura la funcionalidad de la app
+ * Autora: Claudia Torres Cruz
+ * Archivo: MainActivity.java
 **/
 // -----------------------------------------------------------------------------------------
 public class MainActivity extends AppCompatActivity {
     // -----------------------------------------------------------------------------------------
-    // se definen variables
+    // Atributos
     // -----------------------------------------------------------------------------------------
     private static final String ETIQUETA_LOG = "Sprintct";
     private static final int CODIGO_PETICION_PERMISOS = 20022002;
@@ -62,12 +62,25 @@ public class MainActivity extends AppCompatActivity {
     private Intent elIntentDelServicio = null;
     private BluetoothLeScanner elEscanner;
     private ScanCallback callbackDelEscaneo = null;
-    // -----------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     // Métodos para coger el contexto de esta actividad
-    // -----------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
+    /**
+     * @brief Constructor de la clase
+     * @return objeto MainActivity
+     * Diseño: --> MainActivity() --> MainActivity
+     **/
+    // ---------------------------------------------------------------------------------------------
     public MainActivity() {
         myContext =  this;
     }
+    // ---------------------------------------------------------------------------------------------
+    /**
+     * @brief Método que devuelve el contexto de la actividad
+     * @return myContext
+     * Diseño: --> MainActivity() --> MainActivity
+     **/
+    // ---------------------------------------------------------------------------------------------
     public static MainActivity getInstance() {
         return myContext;
     }
@@ -129,6 +142,7 @@ public class MainActivity extends AppCompatActivity {
     // ---------------------------------------------------------------------------------------------
     /**
      * @brief Esta función inicializa los permisos necesarios de ubicación y bluetooth
+     * Diseó: --> inicializarPermisos() -->
      **/
     // ---------------------------------------------------------------------------------------------
     private void inicializarPermisos() {
@@ -167,13 +181,11 @@ public class MainActivity extends AppCompatActivity {
     public void onRequestPermissionsResult(int requestCode, String[] permissions,
                                            int[] grantResults) {
         super.onRequestPermissionsResult( requestCode, permissions, grantResults);
-
         switch (requestCode) {
             case CODIGO_PETICION_PERMISOS:
                 // If request is cancelled, the result arrays are empty.
                 if (grantResults.length > 0 &&
                         grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-
                     Log.d(ETIQUETA_LOG, " onRequestPermissionResult(): permisos concedidos  !!!!");
                     // Permission is granted. Continue the action or workflow
                     // in your app.
