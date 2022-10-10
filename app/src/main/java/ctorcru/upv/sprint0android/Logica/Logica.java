@@ -18,26 +18,45 @@ import java.util.Map;
 
 import ctorcru.upv.sprint0android.MainActivity;
 import ctorcru.upv.sprint0android.Modelo.Medicion;
-
+// ---------------------------------------------------------------------------------------------
+/**
+ * @brief Esta clase se encarga de subir la Medicion a la base de datos
+ * Autora: Claudia Torres Cruz
+ * Archivo: Logica.java
+ **/
+// ---------------------------------------------------------------------------------------------
 public class Logica {
+    // Atributos
     public static final String URL_Uni = "http://192.168.174.101:80/sprint0/insertarMedida.php";
     private static final String URL = "http://10.236.55.145:80/sprint0/insertarMedida.php";
     private static final String ETIQUETA_LOG = "Sprintct";
-
+    // ---------------------------------------------------------------------------------------------
+    /**
+     * @brief Constructor de la clase para poder ser llamado desde otra de forma simple
+     * @return objeto Logica
+     * Diseño:  --> Logica() --> Logica
+     **/
+    // ---------------------------------------------------------------------------------------------
     public Logica() {
     }
-
+    // ---------------------------------------------------------------------------------------------
+    /**
+     * @brief Este método se encarga de insertar la medida en la base de datos usando un POST
+     * @param medicion
+     * Diseño: Medicion --> insertarMedida() -->
+     **/
+    // ---------------------------------------------------------------------------------------------
     public void insertarMedida(Medicion medicion){
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 Log.d(ETIQUETA_LOG, "OPERACION EXISTOSA");
-            }
+            } //()
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Log.d(ETIQUETA_LOG, error.toString());
-            }
+            } //()
         }){
             //Parametros que enviamos al servidor
             @Nullable
@@ -48,10 +67,9 @@ public class Logica {
                 parametros.put("medida", medicion.getMedida());
                 parametros.put("fecha", medicion.getFecha());
                 return parametros;
-            }
+            } //()
         };
-
         RequestQueue requestQueue = Volley.newRequestQueue(MainActivity.getInstance());
         requestQueue.add(stringRequest);
-    }
-}
+    } //()
+} //()
