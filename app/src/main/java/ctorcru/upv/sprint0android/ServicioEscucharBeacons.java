@@ -10,7 +10,6 @@ import android.bluetooth.le.ScanResult;
 import android.bluetooth.le.ScanSettings;
 import android.content.Intent;
 import android.util.Log;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +17,7 @@ import java.util.List;
 import ctorcru.upv.sprint0android.Logica.Logica;
 import ctorcru.upv.sprint0android.Modelo.Medicion;
 import ctorcru.upv.sprint0android.Modelo.TramaIBeacon;
+import ctorcru.upv.sprint0android.Modelo.Utilidades;
 
 // ---------------------------------------------------------------------------------------------
 /**
@@ -35,7 +35,7 @@ public class ServicioEscucharBeacons extends IntentService {
     private boolean seguir = true;
     private BluetoothLeScanner elEscanner;
     private ScanCallback callbackDelEscaneo = null;
-    private String dispotivo;
+    private String dispotivo = "GTI-3A-ClaudiaTorresCruz";
     // ---------------------------------------------------------------------------------------------
     /**
      * @brief Este es el constructor de nuestra clase
@@ -94,8 +94,6 @@ public class ServicioEscucharBeacons extends IntentService {
     @Override
     protected void onHandleIntent(Intent intent) {
         this.tiempoDeEspera = intent.getLongExtra("tiempoDeEspera", /* default */ 50000);
-        //coge el nombre del dispositivo del intent al ejecutar el servicio
-        this.dispotivo = intent.getStringExtra("nomrbeDispositivo");
         Log.d(ETIQUETA_LOG, " dispositivoEscuchando=" + dispotivo );
         this.seguir = true;
         // compruebo que los permisos de bluetooth han sido concedidos
@@ -212,7 +210,7 @@ public class ServicioEscucharBeacons extends IntentService {
         Log.d(ETIQUETA_LOG, " ****************************************************");
 
         //Aquí agrego el filtro para que al encontrar mi dispositivo se pueda subir a la base de datos
-        if(bluetoothDevice.getName() != null && bluetoothDevice.getName().equals("GTI-3A-ClaudiaTorresCruz")) {
+        if(bluetoothDevice.getName() != null && bluetoothDevice.getName().equals(dispotivo)) {
             Log.d("AAAA", "Entro en if");
             subirMedida(new Medicion(Utilidades.bytesToInt(tib.getMinor())));
         } //if()

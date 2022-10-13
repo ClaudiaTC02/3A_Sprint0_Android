@@ -27,8 +27,10 @@ import ctorcru.upv.sprint0android.Modelo.Medicion;
 // ---------------------------------------------------------------------------------------------
 public class Logica {
     // Atributos
-    public static final String URL_Uni = "http://192.168.174.101:80/sprint0/insertarMedida.php";
-    private static final String URL = "http://10.236.55.145:80/sprint0/insertarMedida.php";
+    //URL casa
+    public static final String URL = "http://192.168.85.93:80/sprint0/insertarMedida.php";
+    //URL universidad
+    //private static final String URL = "http://10.236.55.145:80/sprint0/insertarMedida.php";
     private static final String ETIQUETA_LOG = "Sprintct";
     // ---------------------------------------------------------------------------------------------
     /**
@@ -51,11 +53,13 @@ public class Logica {
             @Override
             public void onResponse(String response) {
                 Log.d(ETIQUETA_LOG, "OPERACION EXISTOSA");
+                Toast.makeText(MainActivity.getInstance(), "La medida se ha subido a la base de datos", Toast.LENGTH_SHORT).show();
             } //()
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Log.d(ETIQUETA_LOG, error.toString());
+                Toast.makeText(MainActivity.getInstance(), "Ocurrió un problema", Toast.LENGTH_SHORT).show();
             } //()
         }){
             //Parametros que enviamos al servidor

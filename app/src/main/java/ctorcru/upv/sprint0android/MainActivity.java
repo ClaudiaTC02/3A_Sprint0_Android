@@ -51,17 +51,11 @@ public class MainActivity extends AppCompatActivity {
     private static final String ETIQUETA_LOG = "Sprintct";
     private static final int CODIGO_PETICION_PERMISOS = 20022002;
     private static MainActivity myContext;
-    private String nombreDispositivo = "GTI-3A-ClaudiaTorresCruz";
-    Button anyadir;
-    TextView numero;
-    // Objeto con clase simulado
-    Beacons beacons = new Beacons();
     // -----------------------------------------------------------------------------------------
     // se definen objetos de biblioteca
     // -----------------------------------------------------------------------------------------
     private Intent elIntentDelServicio = null;
     private BluetoothLeScanner elEscanner;
-    private ScanCallback callbackDelEscaneo = null;
     // ---------------------------------------------------------------------------------------------
     // Métodos para coger el contexto de esta actividad
     // ---------------------------------------------------------------------------------------------
@@ -90,19 +84,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        anyadir = (Button)findViewById(R.id.anyadir);
-        numero = (TextView)findViewById(R.id.numero);
-
         inicializarPermisos();
-
-        anyadir.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                int aleatorio = beacons.anyadirNumeroAleatorio();
-                numero.setText(String.valueOf(aleatorio));
-            }
-        });
     }
     // ---------------------------------------------------------------------------------------------
     /**
@@ -120,7 +102,6 @@ public class MainActivity extends AppCompatActivity {
         Log.d(ETIQUETA_LOG, " MainActivity.constructor : voy a arrancar el servicio");
         this.elIntentDelServicio = new Intent(this, ServicioEscucharBeacons.class);
         this.elIntentDelServicio.putExtra("tiempoDeEspera", (long) 5000);
-        this.elIntentDelServicio.putExtra("nombreDispositivo",nombreDispositivo);
         startService( this.elIntentDelServicio );
     } // ()
     // ---------------------------------------------------------------------------------------------

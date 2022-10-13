@@ -1,24 +1,8 @@
-package ctorcru.upv.sprint0android;
-
-import android.util.Log;
-
-import androidx.annotation.Nullable;
-
-import com.android.volley.AuthFailureError;
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
+package ctorcru.upv.sprint0android.Modelo;
 
 import java.math.BigInteger;
 import java.nio.ByteBuffer;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.UUID;
-
-import ctorcru.upv.sprint0android.Modelo.Medicion;
 
 // ---------------------------------------------------------------------------------------------
 /**
