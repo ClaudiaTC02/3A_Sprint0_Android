@@ -1,0 +1,146 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="ctorcru.upv.sprint0android"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="21"
+8-->C:\Users\audin\AndroidStudioProjects\Sprint0Android\app\src\main\AndroidManifest.xml
+9        android:targetSdkVersion="32" />
+9-->C:\Users\audin\AndroidStudioProjects\Sprint0Android\app\src\main\AndroidManifest.xml
+10
+11    <uses-permission android:name="android.permission.INTERNET" />
+11-->C:\Users\audin\AndroidStudioProjects\Sprint0Android\app\src\main\AndroidManifest.xml:4:5-66
+11-->C:\Users\audin\AndroidStudioProjects\Sprint0Android\app\src\main\AndroidManifest.xml:4:22-64
+12    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+12-->C:\Users\audin\AndroidStudioProjects\Sprint0Android\app\src\main\AndroidManifest.xml:5:5-74
+12-->C:\Users\audin\AndroidStudioProjects\Sprint0Android\app\src\main\AndroidManifest.xml:5:22-71
+13    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+13-->C:\Users\audin\AndroidStudioProjects\Sprint0Android\app\src\main\AndroidManifest.xml:6:5-79
+13-->C:\Users\audin\AndroidStudioProjects\Sprint0Android\app\src\main\AndroidManifest.xml:6:22-76
+14    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+14-->C:\Users\audin\AndroidStudioProjects\Sprint0Android\app\src\main\AndroidManifest.xml:7:5-81
+14-->C:\Users\audin\AndroidStudioProjects\Sprint0Android\app\src\main\AndroidManifest.xml:7:22-78
+15    <!-- BLUETOOTH PERMISSION -->
+16    <!-- Request legacy Bluetooth permissions on older devices. -->
+17    <uses-permission android:name="android.permission.BLUETOOTH" />
+17-->C:\Users\audin\AndroidStudioProjects\Sprint0Android\app\src\main\AndroidManifest.xml:10:5-68
+17-->C:\Users\audin\AndroidStudioProjects\Sprint0Android\app\src\main\AndroidManifest.xml:10:22-65
+18    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+18-->C:\Users\audin\AndroidStudioProjects\Sprint0Android\app\src\main\AndroidManifest.xml:5:5-74
+18-->C:\Users\audin\AndroidStudioProjects\Sprint0Android\app\src\main\AndroidManifest.xml:5:22-71
+19    <!--
+20         Needed only if your app looks for Bluetooth devices.
+21             If your app doesn't use Bluetooth scan results to derive physical
+22             location information, you can strongly assert that your app
+23             doesn't derive physical location.
+24    -->
+25    <uses-permission android:name="android.permission.BLUETOOTH_SCAN" />
+25-->C:\Users\audin\AndroidStudioProjects\Sprint0Android\app\src\main\AndroidManifest.xml:16:5-73
+25-->C:\Users\audin\AndroidStudioProjects\Sprint0Android\app\src\main\AndroidManifest.xml:16:22-70
+26    <!--
+27      Needed only if your app makes the device discoverable to Bluetooth
+28      devices.
+29    -->
+30    <uses-permission android:name="android.permission.BLUETOOTH_ADVERTISE" />
+30-->C:\Users\audin\AndroidStudioProjects\Sprint0Android\app\src\main\AndroidManifest.xml:19:5-78
+30-->C:\Users\audin\AndroidStudioProjects\Sprint0Android\app\src\main\AndroidManifest.xml:19:22-75
+31    <!--
+32         Needed only if your app communicates with already-paired Bluetooth
+33           devices.
+34    -->
+35    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
+35-->C:\Users\audin\AndroidStudioProjects\Sprint0Android\app\src\main\AndroidManifest.xml:22:5-76
+35-->C:\Users\audin\AndroidStudioProjects\Sprint0Android\app\src\main\AndroidManifest.xml:22:22-73
+36    <!-- bibo01 : hardware option -->
+37    <uses-feature
+37-->C:\Users\audin\AndroidStudioProjects\Sprint0Android\app\src\main\AndroidManifest.xml:24:5-87
+38        android:name="android.hardware.bluetooth"
+38-->C:\Users\audin\AndroidStudioProjects\Sprint0Android\app\src\main\AndroidManifest.xml:24:19-60
+39        android:required="false" />
+39-->C:\Users\audin\AndroidStudioProjects\Sprint0Android\app\src\main\AndroidManifest.xml:24:61-85
+40    <uses-feature
+40-->C:\Users\audin\AndroidStudioProjects\Sprint0Android\app\src\main\AndroidManifest.xml:25:5-90
+41        android:name="android.hardware.bluetooth_le"
+41-->C:\Users\audin\AndroidStudioProjects\Sprint0Android\app\src\main\AndroidManifest.xml:25:19-63
+42        android:required="false" />
+42-->C:\Users\audin\AndroidStudioProjects\Sprint0Android\app\src\main\AndroidManifest.xml:25:64-88
+43
+44    <application
+44-->C:\Users\audin\AndroidStudioProjects\Sprint0Android\app\src\main\AndroidManifest.xml:28:5-46:19
+45        android:allowBackup="true"
+45-->C:\Users\audin\AndroidStudioProjects\Sprint0Android\app\src\main\AndroidManifest.xml:30:9-35
+46        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+46-->[androidx.core:core:1.8.0] C:\Users\audin\.gradle\caches\transforms-3\882d48eed7854c24bdca6c099371f305\transformed\core-1.8.0\AndroidManifest.xml:24:18-86
+47        android:debuggable="true"
+48        android:icon="@mipmap/ic_launcher"
+48-->C:\Users\audin\AndroidStudioProjects\Sprint0Android\app\src\main\AndroidManifest.xml:31:9-43
+49        android:label="@string/app_name"
+49-->C:\Users\audin\AndroidStudioProjects\Sprint0Android\app\src\main\AndroidManifest.xml:32:9-41
+50        android:roundIcon="@mipmap/ic_launcher_round"
+50-->C:\Users\audin\AndroidStudioProjects\Sprint0Android\app\src\main\AndroidManifest.xml:33:9-54
+51        android:supportsRtl="true"
+51-->C:\Users\audin\AndroidStudioProjects\Sprint0Android\app\src\main\AndroidManifest.xml:34:9-35
+52        android:testOnly="true"
+53        android:theme="@style/Theme.Sprint0Android"
+53-->C:\Users\audin\AndroidStudioProjects\Sprint0Android\app\src\main\AndroidManifest.xml:35:9-52
+54        android:usesCleartextTraffic="true" >
+54-->C:\Users\audin\AndroidStudioProjects\Sprint0Android\app\src\main\AndroidManifest.xml:29:9-44
+55        <activity
+55-->C:\Users\audin\AndroidStudioProjects\Sprint0Android\app\src\main\AndroidManifest.xml:36:9-44:20
+56            android:name="ctorcru.upv.sprint0android.MainActivity"
+56-->C:\Users\audin\AndroidStudioProjects\Sprint0Android\app\src\main\AndroidManifest.xml:37:13-41
+57            android:exported="true" >
+57-->C:\Users\audin\AndroidStudioProjects\Sprint0Android\app\src\main\AndroidManifest.xml:38:13-36
+58            <intent-filter>
+58-->C:\Users\audin\AndroidStudioProjects\Sprint0Android\app\src\main\AndroidManifest.xml:39:13-43:29
+59                <action android:name="android.intent.action.MAIN" />
+59-->C:\Users\audin\AndroidStudioProjects\Sprint0Android\app\src\main\AndroidManifest.xml:40:17-69
+59-->C:\Users\audin\AndroidStudioProjects\Sprint0Android\app\src\main\AndroidManifest.xml:40:25-66
+60
+61                <category android:name="android.intent.category.LAUNCHER" />
+61-->C:\Users\audin\AndroidStudioProjects\Sprint0Android\app\src\main\AndroidManifest.xml:42:17-77
+61-->C:\Users\audin\AndroidStudioProjects\Sprint0Android\app\src\main\AndroidManifest.xml:42:27-74
+62            </intent-filter>
+63        </activity>
+64
+65        <service android:name="ctorcru.upv.sprint0android.ServicioEscucharBeacons" />
+65-->C:\Users\audin\AndroidStudioProjects\Sprint0Android\app\src\main\AndroidManifest.xml:45:9-60
+65-->C:\Users\audin\AndroidStudioProjects\Sprint0Android\app\src\main\AndroidManifest.xml:45:18-57
+66
+67        <activity
+67-->[pub.devrel:easypermissions:3.0.0] C:\Users\audin\.gradle\caches\transforms-3\8825af5a323fa53ea68ae59117059fa0\transformed\jetified-easypermissions-3.0.0\AndroidManifest.xml:12:9-16:66
+68            android:name="pub.devrel.easypermissions.AppSettingsDialogHolderActivity"
+68-->[pub.devrel:easypermissions:3.0.0] C:\Users\audin\.gradle\caches\transforms-3\8825af5a323fa53ea68ae59117059fa0\transformed\jetified-easypermissions-3.0.0\AndroidManifest.xml:13:13-86
+69            android:exported="false"
+69-->[pub.devrel:easypermissions:3.0.0] C:\Users\audin\.gradle\caches\transforms-3\8825af5a323fa53ea68ae59117059fa0\transformed\jetified-easypermissions-3.0.0\AndroidManifest.xml:14:13-37
+70            android:label=""
+70-->[pub.devrel:easypermissions:3.0.0] C:\Users\audin\.gradle\caches\transforms-3\8825af5a323fa53ea68ae59117059fa0\transformed\jetified-easypermissions-3.0.0\AndroidManifest.xml:15:13-29
+71            android:theme="@style/EasyPermissions.Transparent" />
+71-->[pub.devrel:easypermissions:3.0.0] C:\Users\audin\.gradle\caches\transforms-3\8825af5a323fa53ea68ae59117059fa0\transformed\jetified-easypermissions-3.0.0\AndroidManifest.xml:16:13-63
+72
+73        <provider
+73-->[androidx.emoji2:emoji2:1.2.0] C:\Users\audin\.gradle\caches\transforms-3\e4bce1f52ee3a20167e5ac3f3ff48c6c\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:24:9-32:20
+74            android:name="androidx.startup.InitializationProvider"
+74-->[androidx.emoji2:emoji2:1.2.0] C:\Users\audin\.gradle\caches\transforms-3\e4bce1f52ee3a20167e5ac3f3ff48c6c\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:25:13-67
+75            android:authorities="ctorcru.upv.sprint0android.androidx-startup"
+75-->[androidx.emoji2:emoji2:1.2.0] C:\Users\audin\.gradle\caches\transforms-3\e4bce1f52ee3a20167e5ac3f3ff48c6c\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:26:13-68
+76            android:exported="false" >
+76-->[androidx.emoji2:emoji2:1.2.0] C:\Users\audin\.gradle\caches\transforms-3\e4bce1f52ee3a20167e5ac3f3ff48c6c\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:27:13-37
+77            <meta-data
+77-->[androidx.emoji2:emoji2:1.2.0] C:\Users\audin\.gradle\caches\transforms-3\e4bce1f52ee3a20167e5ac3f3ff48c6c\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:29:13-31:52
+78                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+78-->[androidx.emoji2:emoji2:1.2.0] C:\Users\audin\.gradle\caches\transforms-3\e4bce1f52ee3a20167e5ac3f3ff48c6c\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:30:17-75
+79                android:value="androidx.startup" />
+79-->[androidx.emoji2:emoji2:1.2.0] C:\Users\audin\.gradle\caches\transforms-3\e4bce1f52ee3a20167e5ac3f3ff48c6c\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:31:17-49
+80            <meta-data
+80-->[androidx.lifecycle:lifecycle-process:2.4.1] C:\Users\audin\.gradle\caches\transforms-3\f01192a4ab698af49227468fd97e3fea\transformed\jetified-lifecycle-process-2.4.1\AndroidManifest.xml:31:13-33:52
+81                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+81-->[androidx.lifecycle:lifecycle-process:2.4.1] C:\Users\audin\.gradle\caches\transforms-3\f01192a4ab698af49227468fd97e3fea\transformed\jetified-lifecycle-process-2.4.1\AndroidManifest.xml:32:17-78
+82                android:value="androidx.startup" />
+82-->[androidx.lifecycle:lifecycle-process:2.4.1] C:\Users\audin\.gradle\caches\transforms-3\f01192a4ab698af49227468fd97e3fea\transformed\jetified-lifecycle-process-2.4.1\AndroidManifest.xml:33:17-49
+83        </provider>
+84    </application>
+85
+86</manifest>

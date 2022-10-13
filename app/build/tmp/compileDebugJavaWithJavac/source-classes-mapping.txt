@@ -1,0 +1,18 @@
+ctorcru/upv/sprint0android/BuildConfig.java
+ ctorcru.upv.sprint0android.BuildConfig
+ctorcru/upv/sprint0android/Modelo/TramaIBeacon.java
+ ctorcru.upv.sprint0android.Modelo.TramaIBeacon
+ctorcru/upv/sprint0android/Logica/Logica.java
+ ctorcru.upv.sprint0android.Logica.Logica
+ ctorcru.upv.sprint0android.Logica.Logica$1
+ ctorcru.upv.sprint0android.Logica.Logica$2
+ ctorcru.upv.sprint0android.Logica.Logica$3
+ctorcru/upv/sprint0android/MainActivity.java
+ ctorcru.upv.sprint0android.MainActivity
+ctorcru/upv/sprint0android/Modelo/Utilidades.java
+ ctorcru.upv.sprint0android.Modelo.Utilidades
+ctorcru/upv/sprint0android/ServicioEscucharBeacons.java
+ ctorcru.upv.sprint0android.ServicioEscucharBeacons
+ ctorcru.upv.sprint0android.ServicioEscucharBeacons$1
+ctorcru/upv/sprint0android/Modelo/Medicion.java
+ ctorcru.upv.sprint0android.Modelo.Medicion
